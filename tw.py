@@ -13,7 +13,7 @@ logging.basicConfig(filename='posspects.log')
 
 
 class Posspects():
-    def __init__(self, cfg_path, players_path, depth, sleep_for):
+    def __init__(self, cfg_path, players_path, depth):
         with open(cfg_path) as f:
             cfg = json.load(f)
         self.client = Twython(app_key=cfg['consumer_key'],
@@ -54,7 +54,7 @@ class Posspects():
 
 
 if __name__ == '__main__':
-    cfg_path, players_path, depth, sleep_for = sys.argv[1:]
-    posspects = Posspects(cfg_path, players_path, int(depth), int(sleep_for))
+    cfg_path, players_path, depth = sys.argv[1:]
+    posspects = Posspects(cfg_path, players_path, int(depth))
     posspects.tweet()
 
